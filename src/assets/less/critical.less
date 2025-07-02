@@ -5,6 +5,8 @@
 // The rest of the home page styles in local.css will be deferred and
 // ─────────────────────────────────────────────────────────────────────────────
 
+
+
 /*-- -------------------------- -->
 <---           Hero             -->
 <--- -------------------------- -*/
@@ -29,7 +31,7 @@
             width: (500/16rem);
             /* make really long so it covers the whole screen all the way to desktop */
             height: (4000/16rem);
-            background: #fff;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 50%, var(--accent) 100%);
             opacity: 1;
             transform: rotate(-67deg);
             transform-origin: center;
@@ -46,7 +48,7 @@
             content: "";
             width: (500/16rem);
             height: (4000/16rem);
-            background: #fff;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 50%, var(--accent) 100%);
             opacity: 1;
             transform: rotate(67deg);
             transform-origin: center;
@@ -67,21 +69,20 @@
             left: 0;
             z-index: -2;
 
-            &:before {
-                /* Overlay */
-                content: "";
-                width: 100%;
-                height: 100%;
-                background: #000;
-                opacity: 0.7;
-                position: absolute;
-                display: block;
-                top: 0;
-                left: 0;
-                z-index: 1;
-                /* prevents the cursor from interacting with it */
-                pointer-events: none;
-            }
+                    &:before {
+            /* Overlay */
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(10, 10, 10, 0.7) 50%, rgba(26, 26, 26, 0.6) 100%);
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* prevents the cursor from interacting with it */
+            pointer-events: none;
+        }
 
             img {
                 position: absolute;
@@ -120,10 +121,12 @@
                 height: clamp(0.25rem, 0.8vw, 0.5rem);
                 /* 16px - 24px */
                 margin: clamp(1rem, 4vw, 1.5rem) auto clamp(1rem, 4vw, 1.5rem);
-                background: var(--primary);
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
                 opacity: 1;
                 position: relative;
                 display: block;
+                border-radius: 2px;
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
             }
         }
 
@@ -202,12 +205,13 @@
             margin-top: ~"calc(clamp(5rem, 13vw, 4.75rem)*-1)";
             /* 40px - 60px top and bottom, 16px - 44px left & right */
             padding: clamp(2.5rem, 4.7vw, 3.75rem) clamp(1rem, 5.3vw, 2.75rem);
-            box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.05);
-            border-radius: (5/16rem);
-            border-top: 8px solid var(--primary);
-            background-color: #fff;
+            box-shadow: 0px 20px 40px 0px rgba(0, 212, 255, 0.2);
+            border-radius: (16/16rem);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 100%);
             /* prevents padding and border from affecting height and width */
             box-sizing: border-box;
+            backdrop-filter: blur(10px);
         }
 
         .cs-item {
@@ -229,16 +233,19 @@
             margin: auto;
             /* 20px - 24px */
             margin-bottom: clamp(1.25rem, 5vw, 1.5rem);
-            background: var(--primary);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            border: 2px solid rgba(0, 212, 255, 0.2);
 
             img {
                 /* 44px - 52px */
                 width: clamp(2.75rem, 5.8vw, 3.25rem);
                 height: auto;
+                filter: brightness(0) invert(1);
             }
         }
 
@@ -248,7 +255,8 @@
             text-transform: uppercase;
             text-align: center;
             margin: 0 auto (8/16rem);
-            color: var(--headerColor);
+            color: var(--bodyTextColorWhite);
+            font-weight: 600;
         }
 
         .cs-text {
@@ -304,24 +312,24 @@
     }
 }
 
-/* Dark Mode */
+/* Dark Mode - Now default theme */
 @media only screen and (min-width: 0rem) {
     body.dark-mode {
         #h-services-143 {
             .cs-card-group {
-                background: var(--medium);
+                background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 100%);
             }
 
             .cs-icon {
-                background: var(--darkTint);
+                background: linear-gradient(45deg, var(--primary), var(--secondary));
             }
 
             .cs-title {
-                color: #fff;
+                color: var(--bodyTextColorWhite);
             }
 
             .cs-text {
-                color: #fff;
+                color: var(--bodyTextColor);
             }
         }
     }

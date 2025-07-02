@@ -48,9 +48,11 @@
             margin: 0 0 (32/16rem) 0;
             /* 16px - 32px */
             padding: clamp(1rem, 3vw, 2rem);
-            background-color: #f7f7f7;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 100%);
             border-radius: (16/16rem);
             position: relative;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
         }
 
         .cs-quote-text {
@@ -58,7 +60,7 @@
             font-size: clamp(0.875rem, 1.5vw, 1rem);
             line-height: 1.5em;
             margin: 0 0 (16/16rem);
-            color: #767676;
+            color: var(--bodyTextColor);
             display: block;
         }
 
@@ -68,14 +70,14 @@
             text-transform: uppercase;
             font-weight: bold;
             margin: 0 0 (4/16rem);
-            color: var(--headerColor);
+            color: var(--bodyTextColorWhite);
             display: block;
         }
 
         .cs-job {
             font-size: (14/16rem);
             line-height: 1.5em;
-            color: #767676;
+            color: var(--primary);
             display: block;
         }
 
@@ -126,10 +128,10 @@
         .cs-picture2 {
             width: (414/16em);
             height: (400/16em);
-            background-color: #fff;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 100%);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
             /* 6px - 12px */
-            border: clamp(0.375em, 1.5vw, 0.75em) solid #fff;
+            border: clamp(0.375em, 1.5vw, 0.75em) solid rgba(0, 212, 255, 0.2);
             right: 0;
             bottom: 0;
         }
@@ -210,7 +212,7 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
     #RPsbsr-313 {
-        background-color: #f7f7f7;
+        background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 100%);
         .cs-picture1 {
             left: auto;
             right: 0;
@@ -222,7 +224,8 @@
         }
 
         .cs-quote {
-            background-color: rgba(0, 0, 0, 0.05);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--medium) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
         }
     }
 }

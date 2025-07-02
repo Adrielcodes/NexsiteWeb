@@ -13,18 +13,18 @@
 @media only screen and (min-width: 0rem) {
     /* All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
     :root {
-        --primary: #ff6a3e;
-        --primaryLight: #ffba43;
-        --secondary: #ffba43;
-        --secondaryLight: #ffba43;
-        --headerColor: #1a1a1a;
-        --bodyTextColor: #4e4b66;
-        --bodyTextColorWhite: #fafbfc;
+        --primary: #00d4ff;
+        --primaryLight: #4de8ff;
+        --secondary: #0066ff;
+        --secondaryLight: #3385ff;
+        --headerColor: #ffffff;
+        --bodyTextColor: #b8c5d1;
+        --bodyTextColorWhite: #ffffff;
 
         /* Dark Mode Styles */
-        --dark: #082032;
-        --medium: #2c394b;
-        --accent: #334756;
+        --dark: #0a0a0a;
+        --medium: #1a1a1a;
+        --accent: #2a2a2a;
 
         /* 13px - 16px */
         --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
@@ -47,6 +47,8 @@
         font-size: 100%;
         transition: background-color 0.3s;
         color: var(--bodyTextColor);
+        background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 50%, var(--accent) 100%);
+        min-height: 100vh;
     }
 
     *,
@@ -108,7 +110,7 @@
         z-index: 1;
         position: relative;
         display: inline-block;
-        background-color: var(--primary);
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
         width: auto;
         padding: (16/16rem) (32/16rem);
         text-decoration: none;
@@ -116,17 +118,21 @@
         font-size: (16/16rem);
         line-height: (16/16em);
         font-weight: bold;
-        border-radius: (4/16rem);
+        border-radius: (25/16rem);
         overflow: hidden;
+        border: 2px solid transparent;
+        background-clip: padding-box;
 
         // Transition Properties
         color: var(--bodyTextColorWhite);
-        transition: color 0.3s;
-        transition-delay: 0.1s;
+        transition: all 0.3s ease;
         text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
 
         &:hover {
-            color: #fff;
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
 
             &:before {
                 width: 100%;
@@ -141,12 +147,12 @@
             content: "";
             opacity: 1;
             display: block;
-            background-color: #000;
+            background: linear-gradient(45deg, var(--primaryLight), var(--secondaryLight));
             height: 100%;
 
             //Transition properties
             width: 0;
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
     }
 
@@ -161,16 +167,20 @@
         font-size: (16/16rem);
         line-height: (16/16em);
         font-weight: bold;
-        border: 2px solid #000;
+        border: 2px solid var(--primary);
+        border-radius: (25/16rem);
 
         // Transition Properties
-        color: #000;
-        transition: color 0.3s;
-        transition-delay: 0.1s;
+        color: var(--primary);
+        transition: all 0.3s ease;
         text-align: center;
+        background: transparent;
 
         &:hover {
-            color: #fff;
+            color: var(--dark);
+            border-color: var(--primaryLight);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
 
             &:before {
                 width: 100%;
@@ -185,12 +195,12 @@
             content: "";
             opacity: 1;
             display: block;
-            background-color: #000;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             height: 100%;
 
             //Transition properties
             width: 0;
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
     }
 
@@ -939,8 +949,10 @@
         /* prevents padding and border from affecting height and width */
         box-sizing: border-box;
         padding: 0 (16/16rem);
-        background-color: #fff;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 100%);
+        box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 212, 255, 0.2);
         position: fixed;
         z-index: 10000;
 
@@ -1002,16 +1014,20 @@
             line-height: 1.5em;
             text-decoration: none;
             margin: 0;
-            color: var(--bodyTextColor);
+            color: var(--bodyTextColorWhite);
             display: block;
             position: relative;
+            transition: all 0.3s ease;
+            
             &:hover {
+                color: var(--primary);
                 &:before {
                     width: 100%;
                 }
             }
 
             &.cs-active {
+                color: var(--primary);
                 &:before {
                     width: 100%;
                 }
@@ -1022,23 +1038,24 @@
                 content: "";
                 width: 0%;
                 height: 2px;
-                background: var(--primary);
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
                 opacity: 1;
                 display: block;
                 position: absolute;
                 bottom: (0/16rem);
                 left: 0;
-                transition: width 0.3s;
+                transition: width 0.3s ease;
+                box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
             }
         }
     }
 }
 
-/* Dark Mode */
+/* Dark Mode - Now default theme */
 @media only screen and (min-width: 1024px) {
     body.dark-mode {
         #cs-navigation {
-            background-color: var(--dark);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 100%);
 
             .cs-logo {
                 /* makes it turn white */
@@ -1051,7 +1068,7 @@
 
             .cs-li-link {
                 &:before {
-                    background-color: var(--primaryLight);
+                    background: linear-gradient(90deg, var(--primary), var(--secondary));
                 }
             }
         }
@@ -1259,7 +1276,8 @@
 @media only screen and (min-width: 0rem) {
     #cs-footer-275 {
         padding: var(--sectionPadding);
-        background-color: #1a1a1a;
+        background: linear-gradient(135deg, var(--dark) 0%, var(--medium) 50%, var(--accent) 100%);
+        border-top: 1px solid rgba(0, 212, 255, 0.2);
 
         .cs-container {
             width: 100%;
@@ -1316,18 +1334,20 @@
         .cs-social-link {
             width: (24/16rem);
             height: (24/16rem);
-            background-color: #4e4b66;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             z-index: 1;
-            transition: transform 0.3s, background-color 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.3);
 
             &:hover {
-                background-color: #1a1a1a;
+                background: linear-gradient(45deg, var(--secondary), var(--primary));
                 transform: translateY(-0.1875rem);
+                box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
             }
         }
 
@@ -1363,10 +1383,12 @@
                 width: (32/16rem);
                 height: (4/16rem);
                 margin: (16/16rem) auto (24/16rem) 0;
-                background: var(--primary);
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
                 opacity: 1;
                 position: relative;
                 display: block;
+                border-radius: 2px;
+                box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
             }
         }
 
